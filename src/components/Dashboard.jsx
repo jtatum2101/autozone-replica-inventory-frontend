@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { inventoryAPI } from '../services/api';
+import Charts from './Chart';
+
 
 function Dashboard() {
   const [allInventory, setAllInventory] = useState([]);
@@ -329,6 +331,12 @@ function Dashboard() {
           </div>
         </div>
       </main>
+
+      {/* Charts Section */}
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">📊 Analytics</h2>
+          <Charts />
+        </div>
 
       {/* Order Modal */}
       {showModal && selectedPart && (
