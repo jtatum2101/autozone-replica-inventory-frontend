@@ -27,11 +27,14 @@ export const inventoryAPI = {
   
   // Get all parts
   getAllParts: () => api.get('/parts'),
-
+  
+  // Get all sales
   getAllSales: () => api.get('/sales'),
-
+  
+  // Get sales by store
   getSalesByStore: (storeId) => api.get(`/sales/store/${storeId}`),
-
+  
+  // Get top selling parts
   getTopSellingParts: (limit = 10) => api.get(`/sales/top-selling?limit=${limit}`),
 };
 
