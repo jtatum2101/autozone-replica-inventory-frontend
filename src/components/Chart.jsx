@@ -130,12 +130,7 @@ function Charts() {
         display: false,
       },
       title: {
-        display: true,
-        text: 'Top 10 Best-Selling Parts',
-        font: {
-          size: 16,
-          weight: 'bold',
-        },
+        display: false,
       },
     },
     scales: {
@@ -156,12 +151,7 @@ function Charts() {
         display: false,
       },
       title: {
-        display: true,
-        text: 'Sales Trend (Last 30 Days)',
-        font: {
-          size: 16,
-          weight: 'bold',
-        },
+        display: false,
       },
     },
     scales: {
@@ -175,17 +165,19 @@ function Charts() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* Sales Trend Chart */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <div style={{ height: '400px' }}>
+      <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">📈 Sales Trend (Last 30 Days)</h3>
+        <div style={{ height: '300px' }}>
           {salesTrendData && <Line data={salesTrendData} options={lineOptions} />}
         </div>
       </div>
 
       {/* Top Selling Parts Chart */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <div style={{ height: '400px' }}>
+      <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">🏆 Top 10 Best-Selling Parts</h3>
+        <div style={{ height: '300px' }}>
           {topSellingData && <Bar data={topSellingData} options={barOptions} />}
         </div>
       </div>
