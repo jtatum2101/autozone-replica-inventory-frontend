@@ -333,10 +333,12 @@ function Dashboard() {
       </main>
 
       {/* Charts Section */}
-        <div className="mt-8">
+      < div className="bg-white rounded-lg shadow-md p-6">
+        
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Analytics</h2>
           <Charts />
-        </div>
+        
+      </div>
 
       {/* Order Modal */}
       {showModal && selectedPart && (
