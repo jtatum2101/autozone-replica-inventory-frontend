@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { inventoryAPI } from '../services/api';
 import Charts from './Chart';
 
-
-function Dashboard() {
+function Dashboard({ username, onLogout }) {
   const [allInventory, setAllInventory] = useState([]);
   const [reorderItems, setReorderItems] = useState([]);
   const [lowStockItems, setLowStockItems] = useState([]);
@@ -101,8 +100,21 @@ function Dashboard() {
       {/* Header */}
       <header className="bg-orange-600 text-white shadow-lg">
         <div className="container mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold">AutoZone Inventory Management</h1>
-          <p className="text-orange-100 mt-1">Intelligent Stock Monitoring & Reorder System</p>
+          <div className="flex justify-between items-center">
+            <div>
+              <h1 className="text-3xl font-bold">AutoZone Inventory Management</h1>
+              <p className="text-orange-100 mt-1">Intelligent Stock Monitoring & Reorder System</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-orange-100">Welcome, {username}!</span>
+              <button
+                onClick={onLogout}
+                className="bg-white text-orange-600 px-4 py-2 rounded-lg font-semibold hover:bg-orange-50 transition"
+              >
+                Logout
+              </button>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -300,7 +312,7 @@ function Dashboard() {
         </div>
 
         {/* Store List */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">🏪 Store Locations</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {stores.map((store) => (
@@ -330,15 +342,13 @@ function Dashboard() {
             ))}
           </div>
         </div>
-      </main>
 
-      {/* Charts Section */}
-      < div className="bg-white rounded-lg shadow-md p-6">
-        
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Analytics</h2>
+        {/* Charts Section */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">📊 Analytics</h2>
           <Charts />
-        
-      </div>
+        </div>
+      </main>
 
       {/* Order Modal */}
       {showModal && selectedPart && (
@@ -459,8 +469,8 @@ function Dashboard() {
       {/* Footer */}
       <footer className="bg-gray-800 text-white mt-12 py-6">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-sm">Built by Jeremiah Tatum | AutoZone Internship Project 2025</p>
-          
+          <p className="text-sm">Built by Jeremiah Tatum | AutoZone Internship Project 2026</p>
+          <p className="text-xs text-gray-400 mt-2">Spring Boot + React + PostgreSQL</p>
         </div>
       </footer>
     </div>
